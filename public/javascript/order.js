@@ -6,9 +6,10 @@ $(document).ready(function(){
   var subtotal = $('#subtotal');
   var tax = $('#tax');
   var total = $('#total');
+  var submit = $('#submit');
   var ids = [];
   var prices = [];
-  var cartObj = {};
+  var orderData = [];
 
   $.ajax({
     url: 'https://galvanize-eats-api.herokuapp.com/menu'
@@ -23,9 +24,18 @@ $(document).ready(function(){
     event.preventDefault();
     var q = Number(quantity.val());
     addToCart(q,ids);
-    $(subtotal).html(calcSubtotal(prices));
-    $(tax).html(calcTax(subtotal.html()));
-    $(total).html(calcTotal(subtotal.html(),tax.html()))
+    addTotals(prices);
+  })
+
+  $(submit).on('click',function(event){
+    event.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: 'https://galvanize-eats-api.herokuapp.com/orders',
+      data: orderData,
+    }).done(function(response){
+      alert('Your Order has been Submitted!');
+    })
   })
 
   function addOptGroups(menu){
@@ -71,20 +81,31 @@ $(document).ready(function(){
       var option = $('#'+ids[i]);
       if(option[0].selected){
         for(var j=0 ; j<q; j++){
-          var chosen = document.createElement('p');
-          // $(chosen).attr('id',option.val());
-          $(chosen).html(option.html());
-          $(cart).append(chosen);
-          addPrice($(option).val(),prices);
+          var menuItem = document.createElement('p');
+          $(menuItem).html(option.html());
+          $(menuItem).find('span').remove();
+          var price = document.createElement('p');
+          $(price).html(option.val());
+          $(menuItem).attr('id',option.val());
+          $(cart).append(menuItem);
+          $(cart).append(price);
+          addPriceToArray($(option).val(),prices);
+          addOrderData(orderData,menuItem);
         }
       }
     }
-    // console.log(calcSubtotal(prices));
   }
 
-  // function addPrice(string){
-  //   var price = Number(string.slice(-4));
-  //   prices.push(price);
-  // }
+  function addOrderData(orderData,menuItem){
+    var item = {};
+    var name = $(menuItem).html();
+    item[name] = Number($(menuItem).attr('id'));
+    orderData.push(item);
+  }
 
+  function addTotals(prices){
+    $(subtotal).html(calcSubtotal(prices));
+    $(tax).html(calcTax(subtotal.html()));
+    $(total).html(calcTotal(subtotal.html(),tax.html()));
+  }
 })

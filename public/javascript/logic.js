@@ -1,7 +1,6 @@
-function addPrice(string,prices){
+function addPriceToArray(string,prices){
   var price = Number(string);
   prices.push(price);
-  // console.log(prices);
 }
 
 function calcSubtotal(prices){
@@ -21,4 +20,8 @@ function calcTotal(subtotal,tax){
   var taxNum = Number(tax);
   var total = subNum + taxNum;
   return total.toFixed(2);
+}
+
+function addOrderData(array,entry){
+
 }
