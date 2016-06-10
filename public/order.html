@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='css/order.css'>
+    <title>Order-Galvanize Eats</title>
+  </head>
+  <header>
+    <h2>Galvanize Eats</h2>
+  </header>
+  <main>
+    <div id='col_container'>
+      <section id='col_1'>
+        <form action='' method='post' id='choose'>
+          <select multiple id='food'>
+          </select>
+              <div id='quantity-wrap'>
+                <label for='quantity'>Quantity</label>
+                <input type='number' min='0' max='20' id='quantity'></input>
+              </div>
+              <button id='add_item' type='submit'>Add Item</button>
+        </form>
+        <form action='' method='post' id='order'>
+            <label for='name'>Name</label>
+            <input type='text' class='user_info' id='name'></input>
+          <div>
+            <label for='phone_number'>Phone Number</label>
+            <input type='tel' class='user_info' id='phone_number'></input>
+          </div>
+          <div>
+            <label for='address'>Address</label>
+            <input type='text' class='user_info' id='address'></input>
+          </div>
+          <div>
+            <label for='submit'></label>
+            <input type='submit' id='submit' value='Deliver It!'></input>
+          </div>
+        </form>
+      </section>
+      <section id='receipt'>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <small>@copy Galvanize 2016</small>
+    <i class="fa fa-plus" aria-hidden="true"></i>
+    <small>Denver Colorado</small>
+  </footer>
+  <body>
+    <script type='text/javascript' src='https://code.jquery.com/jquery-3.0.0.js'></script>
+    <script type='text/javascript' src='javascript/logic.js'></script>
+    <script type='text/javascript' src='javascript/order.js'></script>
+  </body>
+</html>
