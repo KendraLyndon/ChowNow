@@ -24,21 +24,37 @@
         <form action='' method='post' id='order'>
             <label for='name'>Name</label>
             <input type='text' class='user_info' id='name'></input>
-          <div>
+          <div class='input_div'>
             <label for='phone_number'>Phone Number</label>
             <input type='tel' class='user_info' id='phone_number'></input>
           </div>
-          <div>
+          <div class='input_div'>
             <label for='address'>Address</label>
             <input type='text' class='user_info' id='address'></input>
           </div>
-          <div>
+          <div class='input_div'>
             <label for='submit'></label>
             <input type='submit' id='submit' value='Deliver It!'></input>
           </div>
         </form>
       </section>
-      <section id='receipt'>
+      <section id='cart-container'>
+        <div id='cart'>
+        </div>
+        <div id='totals'>
+          <div>
+            <p class='totals'>Subtotal</p>
+            <p id='subtotal'></p>
+          </div>
+          <div>
+            <p class='totals'>Tax</p>
+            <p id='tax'></p>
+          </div>
+          <div>
+            <p class='totals'>Total</p>
+            <p id='total'></p>
+          </div>
+        </div>
       </section>
     </div>
   </main>

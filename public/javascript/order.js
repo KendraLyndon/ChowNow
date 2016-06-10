@@ -2,7 +2,10 @@ $(document).ready(function(){
   var food = $('#food');
   var addItem = $('#add_item');
   var quantity = $('#quantity');
-  var receipt = $('#receipt');
+  var cart = $('#cart');
+  var subtotal = $('#subtotal');
+  var tax = $('#tax');
+  var total = $('#total');
   var ids = [];
   var prices = [];
   var cartObj = {};
@@ -13,15 +16,16 @@ $(document).ready(function(){
     var menu = results.menu;
     addOptGroups(menu);
     addMenuItems(menu);
-    ids = addIds(menu,ids);
+    addIds(menu,ids);
   });
+
   $(addItem).on('click',function(event){
     event.preventDefault();
     var q = Number(quantity.val());
-    addToReceipt(q,ids);
-    //calculate subtotal
-    //calculate tax (denver sales tax 2.9%)
-    //calculate total
+    addToCart(q,ids);
+    $(subtotal).html(calcSubtotal(prices));
+    $(tax).html(calcTax(subtotal.html()));
+    $(total).html(calcTotal(subtotal.html(),tax.html()))
   })
 
   function addOptGroups(menu){
@@ -45,9 +49,12 @@ $(document).ready(function(){
     menu.forEach(function(item){
       var matchedGroup = $('#'+item.type);
       var menuItem = document.createElement('option');
-      $(menuItem).html(item.name+'   '+item.price);
+      var price = document.createElement('span');
+      $(menuItem).html(item.name);
+      $(price).html(item.price);
       $(menuItem).attr('id',item.id);
       $(menuItem).attr('value',item.price);
+      $(price).appendTo(menuItem);
       $(menuItem).appendTo(matchedGroup);
     })
   }
@@ -59,22 +66,25 @@ $(document).ready(function(){
     return ids;
   }
 
-  function addToReceipt(q,ids){
+  function addToCart(q,ids){
     for(var i=0;i<ids.length;i++){
       var option = $('#'+ids[i]);
       if(option[0].selected){
         for(var j=0 ; j<q; j++){
           var chosen = document.createElement('p');
+          // $(chosen).attr('id',option.val());
           $(chosen).html(option.html());
-          $(receipt).append(chosen);
-          addPrice($(chosen).html());
+          $(cart).append(chosen);
+          addPrice($(option).val(),prices);
         }
       }
     }
+    // console.log(calcSubtotal(prices));
   }
 
-  function addPrice(string){
-    var
-  }
+  // function addPrice(string){
+  //   var price = Number(string.slice(-4));
+  //   prices.push(price);
+  // }
 
 })
