@@ -4,27 +4,31 @@
   border: 0;
   font-family: 'Open Sans', sans-serif;
 }
-h2{
+h2 {
   color: white;
+  position: relative;
+  margin-top: 5px;
+  margin-left: 15px;
   z-index: 10;
   opacity: 1;
 }
-header{
+header {
   width: 100%;
-  height: 5vh;
+  height: 3em;
   background-color: black;
   z-index: 0;
   opacity: 0.5;
-  /*margin-top: -3em;*/
+  margin-top: -38px;
 }
-main{
+main {
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   background-color: #C98925;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: -48px;
 }
 #col_container{
   width: 50em;
@@ -33,6 +37,7 @@ main{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-top: 3em;
 }
 #col_1{
   width: 55%;
@@ -54,6 +59,9 @@ optgroup{
 option{
   font-size: 20px;
   margin: 10px 0 10px 0;
+}
+span{
+  margin-left: 100px;
 }
 label{
   font-size: 13px;
@@ -78,6 +86,7 @@ label{
   margin-left: 10px;
   text-align: center;
   background-color: #5973A6;
+  opacity: .8;
   height: 45px;
   color: white;
   font-size: 15px;
@@ -97,41 +106,63 @@ label{
   color: white;
   font-size: 20px;
   background-color: #59A673;
+  opacity: .8;
   margin-top: 25px;
+  box-shadow: 1px 1px 1px 1px grey;
 }
 #cart-container{
   background-color: white;
   width: 43%;
   height: 100%
 }
-#cart{
+#cart {
   width: 100%;
-  height: 70%;
+  height: 85%;
+  margin-top: 10px;
+}
+.inline_name{
+  float: left;
+}
+.inline_price{
+  float: right;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 #totals{
   width: 100%;
-  height: 30%;
+  height: 12%;
 }
-.totals{
-  display: inline-block;
+.total{
+  width: 40px;
+  padding-left: 10px;
+  padding-right: 20px;
+  text-align: right;
+}
+.inline_total{
+  float: right;
 }
 footer{
   width: 100%;
   height: 5vh;
   background-color: black;
 }
-.fa-plus{
+.fleur{
   color: white;
   z-index: 10;
 }
 #footer-flex{
   height: 100%;
-  width: 25%;
+  width: 30%;
   margin: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 small{
   color: white;

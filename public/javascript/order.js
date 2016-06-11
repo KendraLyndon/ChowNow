@@ -20,12 +20,28 @@ $(document).ready(function(){
     addIds(menu,ids);
   });
 
+  $(addItem).on('mouseenter',function(){
+    $(this).fadeTo('fast',1);
+  })
+
+  $(addItem).on('mouseleave'),function(){
+    $(this).fadeTo('fast',.8);
+  }
+
   $(addItem).on('click',function(event){
     event.preventDefault();
     var q = Number(quantity.val());
     addToCart(q,ids);
     addTotals(prices);
   })
+
+  $(submit).on('mouseenter',function(){
+    $(this).fadeTo('fast',1);
+  })
+
+  $(submit).on('mouseleave'),function(){
+    $(this).fadeTo('fast',.8);
+  }
 
   $(submit).on('click',function(event){
     event.preventDefault();
@@ -60,7 +76,7 @@ $(document).ready(function(){
       var matchedGroup = $('#'+item.type);
       var menuItem = document.createElement('option');
       var price = document.createElement('span');
-      $(menuItem).html(item.name);
+      $(menuItem).html(item.name+' ');
       $(price).html(item.price);
       $(menuItem).attr('id',item.id);
       $(menuItem).attr('value',item.price);
@@ -81,14 +97,19 @@ $(document).ready(function(){
       var option = $('#'+ids[i]);
       if(option[0].selected){
         for(var j=0 ; j<q; j++){
+          var container = document.createElement('div');
+          $(container).addClass('container');
           var menuItem = document.createElement('p');
           $(menuItem).html(option.html());
           $(menuItem).find('span').remove();
+          $(menuItem).addClass('inline_name');
           var price = document.createElement('p');
           $(price).html(option.val());
+          $(price).addClass('inline_price')
           $(menuItem).attr('id',option.val());
-          $(cart).append(menuItem);
-          $(cart).append(price);
+          $(container).append(menuItem);
+          $(container).append(price);
+          $(cart).append(container);
           addPriceToArray($(option).val(),prices);
           addOrderData(orderData,menuItem);
         }

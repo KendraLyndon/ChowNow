@@ -21,7 +21,3 @@ function calcTotal(subtotal,tax){
   var total = subNum + taxNum;
   return total.toFixed(2);
 }
-
-function addOrderData(array,entry){
-
-}

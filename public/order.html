@@ -6,8 +6,8 @@
     <link rel='stylesheet' href='css/order.css'>
     <title>Order-Galvanize Eats</title>
   </head>
+  <h2>Galvanize Eats</h2>
   <header>
-    <h2>Galvanize Eats</h2>
   </header>
   <main>
     <div id='col_container'>
@@ -42,26 +42,28 @@
         <div id='cart'>
         </div>
         <div id='totals'>
-          <div>
-            <p class='totals'>Subtotal</p>
-            <p id='subtotal'></p>
+          <div class='container'>
+            <p class='inline_total'>Subtotal</p>
+            <p class='total' id='subtotal'></p>
           </div>
-          <div>
-            <p class='totals'>Tax</p>
-            <p id='tax'></p>
+          <div class='container'>
+            <p class='inline_total'>Tax</p>
+            <p class='total' id='tax'></p>
           </div>
-          <div>
-            <p class='totals'>Total</p>
-            <p id='total'></p>
+          <div class='container'>
+            <p class='inline_total'>Total</p>
+            <p class='total' id='total'></p>
           </div>
         </div>
       </section>
     </div>
   </main>
   <footer>
-    <small>@copy Galvanize 2016</small>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    <small>Denver Colorado</small>
+    <div id='footer-flex'>
+      <small>@copy Galvanize 2016</small>
+      <p class='fleur'>&#9884;</p>
+      <small>Denver Colorado</small>
+    </div>
   </footer>
   <body>
     <script type='text/javascript' src='https://code.jquery.com/jquery-3.0.0.js'></script>
